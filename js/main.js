@@ -1,8 +1,10 @@
-let time = 0;
 let beginClock = null;
 let stopClock = null;
 let stopped = 0;
 let interval;
+let minutes;
+let seconds;
+let milliseconds;
 
 class StopWatch  {
     constructor() {
@@ -48,11 +50,13 @@ stopTimer = () => {
     resetButton.disabled = false
     stopClock = new Date();
     clearInterval(started);
+    clockMinutes.innerHTML = minutes
+    clockSeconds.innerHTML = seconds
+    clockMilliseconds.innerHTML = milliseconds
 }
 
 resetTimer = () => {
     console.log("Reset");
-    time = 0;
     beginClock = null;
     stopClock = null;
     stopped = 0;
@@ -80,7 +84,14 @@ let target = document.getElementById("random")
 startButton.disabled = false
 resetButton.disabled = true
 
+let clockMinutes = document.getElementById("minutes")
+let clockSeconds = document.getElementById("seconds")
+let clockMilliseconds = document.getElementById("ms")
+
 startButton.addEventListener("click", () => {
+    clockMinutes.innerHTML = "??"
+    clockSeconds.innerHTML = "??"
+    clockMilliseconds.innerHTML = "??"
     if (!timer.timing) {
         startTimer()
     }
