@@ -5,6 +5,7 @@ let interval;
 let minutes;
 let seconds;
 let milliseconds;
+let targetNumber;
 
 class StopWatch  {
     constructor() {
@@ -12,8 +13,15 @@ class StopWatch  {
     }
 }
 
+calculate = () => {
+    document.getElementById("targetTime").innerHTML = `00:${targetNumber}:000`
+    document.getElementById("stoppedTime").innerHTML = `${minutes}:${seconds}:${milliseconds}`
+}
+
 setTarget = () => {
-    target.innerHTML = Math.ceil(Math.random() * 10) + 5
+    targetNumber = Math.ceil(Math.random() * 10) + 5
+    targetNumber = targetNumber < 10 ? "0" + targetNumber : targetNumber;
+    target.innerHTML = targetNumber
 }
 
 buttonToggle = () => {
@@ -40,7 +48,7 @@ startTimer = () => {
     }
     console.log(stopped);
 
-    started = setInterval(clock, 10);	
+    started = setInterval(clock, 1);	
 }
 
 stopTimer = () => {
@@ -53,6 +61,7 @@ stopTimer = () => {
     clockMinutes.innerHTML = minutes
     clockSeconds.innerHTML = seconds
     clockMilliseconds.innerHTML = milliseconds
+    calculate()
 }
 
 resetTimer = () => {
@@ -64,6 +73,9 @@ resetTimer = () => {
     timer.timing = false;
     startButton.disabled = false
     resetButton.disabled = true
+    clockMinutes.innerHTML = "00"
+    clockSeconds.innerHTML = "00"
+    clockMilliseconds.innerHTML = "000"
 }
 
 clock = () => {
