@@ -12,7 +12,11 @@
 }
 
 #number {
-  white-space: nowrap;
+  font-family: 'Poppins', sans-serif;
+}
+
+#random {
+  font-size: 20px;
 }
 
 #time {

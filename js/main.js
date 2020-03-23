@@ -23,6 +23,7 @@ buttonToggle = () => {
 }
 
 startTimer = () => {
+    setTarget()
     console.log("Start");
     timer.timing = true;
 }
@@ -30,20 +31,20 @@ startTimer = () => {
 stopTimer = () => {
     console.log("Stop");
     timer.timing = false;
+    startButton.disabled = true
 }
 
 resetTimer = () => {
     console.log("Reset");
     time = 0;
     timer.timing = false;
+    startButton.disabled = false
 }
 
 let timer = new StopWatch()
 let startButton = document.getElementById("start") 
 let resetButton = document.getElementById("reset") 
 let target = document.getElementById("random") 
-
-setTarget()
 
 startButton.addEventListener("click", () => {
     if (!timer.timing) {
