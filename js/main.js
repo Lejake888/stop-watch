@@ -72,6 +72,8 @@ clock = () => {
     minutes = timeTaken.getUTCMinutes()
     seconds = timeTaken.getUTCSeconds()
     milliseconds = timeTaken.getUTCMilliseconds()
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
     console.log(minutes)
     console.log(seconds)
     console.log(milliseconds)
@@ -91,7 +93,7 @@ let clockMilliseconds = document.getElementById("ms")
 startButton.addEventListener("click", () => {
     clockMinutes.innerHTML = "??"
     clockSeconds.innerHTML = "??"
-    clockMilliseconds.innerHTML = "??"
+    clockMilliseconds.innerHTML = "???"
     if (!timer.timing) {
         startTimer()
     }
