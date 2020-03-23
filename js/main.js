@@ -7,6 +7,10 @@ class StopWatch  {
     }
 }
 
+setTarget = () => {
+    target.innerHTML = Math.ceil(Math.random() * 10) + 5
+}
+
 buttonToggle = () => {
     if (timer.timing) {
         startButton.innerHTML = "Stop"
@@ -26,7 +30,6 @@ startTimer = () => {
 stopTimer = () => {
     console.log("Stop");
     timer.timing = false;
-
 }
 
 resetTimer = () => {
@@ -38,6 +41,9 @@ resetTimer = () => {
 let timer = new StopWatch()
 let startButton = document.getElementById("start") 
 let resetButton = document.getElementById("reset") 
+let target = document.getElementById("random") 
+
+setTarget()
 
 startButton.addEventListener("click", () => {
     if (!timer.timing) {

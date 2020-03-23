@@ -11,6 +11,10 @@
   margin-top: 100px;
 }
 
+#number {
+  white-space: nowrap;
+}
+
 #time {
   font-size: 130px;
   font-family: 'Poppins', sans-serif;
