@@ -10,16 +10,20 @@ class StopWatch  {
 startTimer = () => {
     console.log("Start");
     timer.timing = true;
+    startButton.innerHTML = "Stop"
 }
 
 stopTimer = () => {
     console.log("Stop");
     timer.timing = false;
+    startButton.innerHTML = "Start"
+
 }
 
 resetTimer = () => {
-    console.log("Stop");
+    console.log("Reset");
     time = 0;
+    timer.timing = false;
 }
 
 let timer = new StopWatch()
