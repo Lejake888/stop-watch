@@ -11,13 +11,14 @@ startTimer = () => {
     console.log("Start");
     timer.timing = true;
     startButton.innerHTML = "Stop"
+    startButton.style.backgroundColor = "red"
 }
 
 stopTimer = () => {
     console.log("Stop");
     timer.timing = false;
     startButton.innerHTML = "Start"
-
+    startButton.style.backgroundColor = "lime"
 }
 
 resetTimer = () => {
