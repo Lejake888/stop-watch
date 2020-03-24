@@ -8,11 +8,19 @@ let milliseconds;
 let targetNumber;
 let sum = 0;
 let round = 0;
+let best = 0;
 
 class StopWatch  {
     constructor() {
         this.timing = false;
     }
+}
+
+bestScore = () => {
+    if (best == 0 || best > sum) {
+        best = sum
+    }
+    document.getElementById("best").innerHTML = best.toFixed(3)
 }
 
 getDifference = () => {
@@ -22,7 +30,8 @@ getDifference = () => {
     else if (convertedTarget > total) {
         sum = convertedTarget - total
     }
-    document.getElementById("difference").innerHTML = sum
+    document.getElementById("difference").innerHTML = sum.toFixed(3)
+    bestScore()
 }
 
 calculate = () => {
