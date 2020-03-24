@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
 * {
   background-color: #f8f8f8;
+  font-family: 'Poppins', sans-serif;
 }
 
 #body {
@@ -11,17 +12,12 @@
   margin-top: 100px;
 }
 
-#number {
-  font-family: 'Poppins', sans-serif;
-}
-
 #random {
   font-size: 20px;
 }
 
 #time {
   font-size: 130px;
-  font-family: 'Poppins', sans-serif;
 }
 
 button {

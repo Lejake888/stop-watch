@@ -6,6 +6,7 @@ let minutes;
 let seconds;
 let milliseconds;
 let targetNumber;
+let round = 0;
 
 class StopWatch  {
     constructor() {
@@ -14,8 +15,12 @@ class StopWatch  {
 }
 
 calculate = () => {
-    document.getElementById("targetTime").innerHTML = `00:${targetNumber}:000`
-    document.getElementById("stoppedTime").innerHTML = `${minutes}:${seconds}:${milliseconds}`
+    targetTime = `00:${targetNumber}:000`
+    stoppedTime = `${minutes}:${seconds}:${milliseconds}`
+    document.getElementById("targetTime").innerHTML = targetTime
+    document.getElementById("stoppedTime").innerHTML = stoppedTime
+    console.log(targetTime)
+    console.log(stoppedTime)
 }
 
 setTarget = () => {
@@ -37,6 +42,8 @@ buttonToggle = () => {
 
 startTimer = () => {
     setTarget()
+    round++
+    document.getElementById("roundCount").innerHTML = round
     console.log("Start");
     timer.timing = true;
     if (beginClock === null) {
@@ -86,6 +93,7 @@ clock = () => {
     milliseconds = timeTaken.getUTCMilliseconds()
     minutes = minutes < 10 ? "0" + minutes : minutes;
     seconds = seconds < 10 ? "0" + seconds : seconds;
+    milliseconds = milliseconds < 100 ? "0" + milliseconds : milliseconds < 10 ? "00" + milliseconds : milliseconds;
     console.log(minutes)
     console.log(seconds)
     console.log(milliseconds)
