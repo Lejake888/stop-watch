@@ -6,6 +6,7 @@ let minutes;
 let seconds;
 let milliseconds;
 let targetNumber;
+let sum = 0;
 let round = 0;
 
 class StopWatch  {
@@ -14,13 +15,25 @@ class StopWatch  {
     }
 }
 
+getDifference = () => {
+    if (total > convertedTarget) {
+        sum = total - convertedTarget
+    }
+    else if (convertedTarget > total) {
+        sum = convertedTarget - total
+    }
+    document.getElementById("difference").innerHTML = sum
+}
+
 calculate = () => {
     targetTime = `00:${targetNumber}:000`
     stoppedTime = `${minutes}:${seconds}:${milliseconds}`
     document.getElementById("targetTime").innerHTML = targetTime
     document.getElementById("stoppedTime").innerHTML = stoppedTime
-    console.log(targetTime)
-    console.log(stoppedTime)
+    minutesInSeconds = minutes * 60
+    total = parseFloat(parseInt(minutesInSeconds) + parseInt(seconds) + (milliseconds/1000))
+    convertedTarget = parseInt(targetNumber)
+    getDifference()
 }
 
 setTarget = () => {
@@ -53,8 +66,6 @@ startTimer = () => {
     if (stopClock !== null) {
         stopped += (new Date() - stopClock);
     }
-    console.log(stopped);
-
     started = setInterval(clock, 1);	
 }
 
