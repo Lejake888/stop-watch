@@ -103,6 +103,7 @@ resetTimer = () => {
     clockMinutes.innerHTML = "00"
     clockSeconds.innerHTML = "00"
     clockMilliseconds.innerHTML = "000"
+    document.getElementById("time").style.color = "black"
 }
 
 clock = () => {
@@ -117,6 +118,9 @@ clock = () => {
     console.log(minutes)
     console.log(seconds)
     console.log(milliseconds)
+    if (seconds > targetNumber + 15) {
+        document.getElementById("time").style.color = "red"
+    }
 }
 
 let timer = new StopWatch()
