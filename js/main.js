@@ -118,7 +118,7 @@ clock = () => {
     console.log(minutes)
     console.log(seconds)
     console.log(milliseconds)
-    if (seconds > targetNumber + 15) {
+    if (seconds >= parseInt(targetNumber) + 15) {
         document.getElementById("time").style.color = "red"
     }
 }
