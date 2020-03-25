@@ -9,10 +9,15 @@
 }
 
 aside {
+  color: rgba(0, 0, 0, 0.5);
   font-size: 20px;
-  padding: 20px;
   float: left;
   position: absolute;
+  left: 75px;
+}
+
+#score {
+  font-size: 50px;
 }
 
 #content {
