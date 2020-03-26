@@ -71,19 +71,24 @@ buttonToggle = () => {
 }
 
 startTimer = () => {
-    setTarget()
-    round++
-    document.getElementById("roundCount").innerHTML = round
-    console.log("Start");
-    timer.timing = true;
-    if (beginClock === null) {
-        beginClock = new Date();
-    }
+    if (round < 10) {
+        setTarget()
+        round++
+        document.getElementById("roundCount").innerHTML = round
+        console.log("Start");
+        timer.timing = true;
+        if (beginClock === null) {
+            beginClock = new Date();
+        }
 
-    if (stopClock !== null) {
-        stopped += (new Date() - stopClock);
+        if (stopClock !== null) {
+            stopped += (new Date() - stopClock);
+        }
+        started = setInterval(clock, 1);	
     }
-    started = setInterval(clock, 1);	
+    else {
+        alert("Game Over")
+    }
 }
 
 stopTimer = () => {
