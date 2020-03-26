@@ -40,6 +40,11 @@ getDifference = () => {
 calculateScore = () => {
     totalScore = totalScore + 100
     document.getElementById("biggestScore").innerHTML = totalScore
+    let calculation = parseInt(100 - (10 * sum))
+    if (calculation > 0) {
+        score += parseInt(100 - (10 * sum))
+    }
+    document.getElementById("score").innerHTML = score
 }
 
 calculateTimeDifference = () => {
