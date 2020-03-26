@@ -9,6 +9,8 @@ let targetNumber;
 let sum = 0;
 let round = 0;
 let best = 0;
+let score = 0;
+let totalScore = 0;
 
 class StopWatch  {
     constructor() {
@@ -21,6 +23,7 @@ bestScore = () => {
         best = sum
     }
     document.getElementById("best").innerHTML = best.toFixed(3)
+    calculateScore()
 }
 
 getDifference = () => {
@@ -34,7 +37,12 @@ getDifference = () => {
     bestScore()
 }
 
-calculate = () => {
+calculateScore = () => {
+    totalScore = totalScore + 100
+    document.getElementById("biggestScore").innerHTML = totalScore
+}
+
+calculateTimeDifference = () => {
     targetTime = `00:${targetNumber}:000`
     stoppedTime = `${minutes}:${seconds}:${milliseconds}`
     document.getElementById("targetTime").innerHTML = targetTime
@@ -88,7 +96,7 @@ stopTimer = () => {
     clockMinutes.innerHTML = minutes
     clockSeconds.innerHTML = seconds
     clockMilliseconds.innerHTML = milliseconds
-    calculate()
+    calculateTimeDifference()
 }
 
 resetTimer = () => {
