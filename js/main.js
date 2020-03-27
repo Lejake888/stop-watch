@@ -76,24 +76,18 @@ buttonToggle = () => {
 }
 
 startTimer = () => {
-    if (round < 10) {
-        setTarget()
-        round++
-        document.getElementById("roundCount").innerHTML = round
-        console.log("Start");
-        timer.timing = true;
-        if (beginClock === null) {
-            beginClock = new Date();
-        }
-
-        if (stopClock !== null) {
-            stopped += (new Date() - stopClock);
-        }
-        started = setInterval(clock, 1);	
+    setTarget()
+    round++
+    document.getElementById("roundCount").innerHTML = round
+    console.log("Start");
+    timer.timing = true;
+    if (beginClock === null) {
+        beginClock = new Date();
     }
-    else {
-        alert("Game Over")
+    if (stopClock !== null) {
+        stopped += (new Date() - stopClock);
     }
+    started = setInterval(clock, 1);	
 }
 
 stopTimer = () => {
@@ -111,17 +105,25 @@ stopTimer = () => {
 
 resetTimer = () => {
     console.log("Reset");
-    beginClock = null;
-    stopClock = null;
-    stopped = 0;
-    interval;
-    timer.timing = false;
-    startButton.disabled = false
-    resetButton.disabled = true
-    clockMinutes.innerHTML = "00"
-    clockSeconds.innerHTML = "00"
-    clockMilliseconds.innerHTML = "000"
-    document.getElementById("time").style.color = "black"
+    if (round < 10) {
+        beginClock = null;
+        stopClock = null;
+        stopped = 0;
+        interval;
+        timer.timing = false;
+        startButton.disabled = false
+        resetButton.disabled = true
+        clockMinutes.innerHTML = "00"
+        clockSeconds.innerHTML = "00"
+        clockMilliseconds.innerHTML = "000"
+        document.getElementById("time").style.color = "black"
+        if (round == 9) {
+            resetButton.innerHTML = "End game"
+        }
+    }
+    else {
+        alert("game over")
+    }
 }
 
 clock = () => {
