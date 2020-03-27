@@ -42,7 +42,9 @@ calculateScore = () => {
     document.getElementById("biggestScore").innerHTML = totalScore
     let calculation = parseInt(100 - (2*(10 * sum)))
     if (calculation > 0) {
-        score += parseInt(100 - (10 * sum))
+        roundedScore =  parseInt(100 - (10 * sum))
+        score += roundedScore
+        document.getElementById("addition").innerHTML = `+${roundedScore}`
     }
     document.getElementById("score").innerHTML = score
 }
