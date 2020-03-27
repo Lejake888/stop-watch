@@ -40,7 +40,7 @@ getDifference = () => {
 calculateScore = () => {
     totalScore = totalScore + 100
     document.getElementById("biggestScore").innerHTML = totalScore
-    let calculation = parseInt(100 - (10 * sum))
+    let calculation = parseInt(100 - (2*(10 * sum)))
     if (calculation > 0) {
         score += parseInt(100 - (10 * sum))
     }
@@ -103,26 +103,40 @@ stopTimer = () => {
     calculateTimeDifference()
 }
 
+resetStats = () => {
+    beginClock = null;
+    stopClock = null;
+    stopped = 0;
+    interval;
+    timer.timing = false;
+    startButton.disabled = false
+    resetButton.disabled = true
+    clockMinutes.innerHTML = "00"
+    clockSeconds.innerHTML = "00"
+    clockMilliseconds.innerHTML = "000"
+    if (round >= 10) {
+        round = 0;
+        best = 0;
+        score = 0;
+        totalScore = 0;
+        document.getElementById("scoreTitle").innerHTML = "Final Score:"
+        resetButton.innerHTML = "Reset"
+    }
+}
+
 resetTimer = () => {
     console.log("Reset");
     if (round < 10) {
-        beginClock = null;
-        stopClock = null;
-        stopped = 0;
-        interval;
-        timer.timing = false;
-        startButton.disabled = false
-        resetButton.disabled = true
-        clockMinutes.innerHTML = "00"
-        clockSeconds.innerHTML = "00"
-        clockMilliseconds.innerHTML = "000"
+        resetStats()
         document.getElementById("time").style.color = "black"
         if (round == 9) {
             resetButton.innerHTML = "End game"
         }
     }
     else {
+        document.getElementById("scoreTitle").innerHTML = "Final Score:"
         alert("game over")
+        resetStats()
     }
 }
 
