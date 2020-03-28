@@ -42,9 +42,11 @@ calculateScore = () => {
     document.getElementById("biggestScore").innerHTML = totalScore
     let calculation = parseInt(100 - (2*(10 * sum)))
     if (calculation > 0) {
-        roundedScore =  parseInt(100 - (10 * sum))
-        score += roundedScore
-        document.getElementById("addition").innerHTML = `+${roundedScore}`
+        score += calculation
+        document.getElementById("addition").innerHTML = `+${calculation}`
+    }
+    else {
+        document.getElementById("addition").innerHTML = `+0`
     }
     document.getElementById("score").innerHTML = score
 }
@@ -78,18 +80,24 @@ buttonToggle = () => {
 }
 
 startTimer = () => {
-    setTarget()
-    round++
-    document.getElementById("roundCount").innerHTML = round
-    console.log("Start");
-    timer.timing = true;
-    if (beginClock === null) {
-        beginClock = new Date();
+    if (round < 10) {
+        setTarget()
+        round++
+        document.getElementById("roundCount").innerHTML = round
+        console.log("Start");
+        timer.timing = true;
+        if (beginClock === null) {
+            beginClock = new Date();
+        }
+
+        if (stopClock !== null) {
+            stopped += (new Date() - stopClock);
+        }
+        started = setInterval(clock, 1);	
     }
-    if (stopClock !== null) {
-        stopped += (new Date() - stopClock);
+    else {
+        alert("Game Over")
     }
-    started = setInterval(clock, 1);	
 }
 
 stopTimer = () => {
@@ -105,7 +113,8 @@ stopTimer = () => {
     calculateTimeDifference()
 }
 
-resetStats = () => {
+resetTimer = () => {
+    console.log("Reset");
     beginClock = null;
     stopClock = null;
     stopped = 0;
@@ -116,30 +125,7 @@ resetStats = () => {
     clockMinutes.innerHTML = "00"
     clockSeconds.innerHTML = "00"
     clockMilliseconds.innerHTML = "000"
-    if (round >= 10) {
-        round = 0;
-        best = 0;
-        score = 0;
-        totalScore = 0;
-        document.getElementById("scoreTitle").innerHTML = "Final Score:"
-        resetButton.innerHTML = "Reset"
-    }
-}
-
-resetTimer = () => {
-    console.log("Reset");
-    if (round < 10) {
-        resetStats()
-        document.getElementById("time").style.color = "black"
-        if (round == 9) {
-            resetButton.innerHTML = "End game"
-        }
-    }
-    else {
-        document.getElementById("scoreTitle").innerHTML = "Final Score:"
-        alert("game over")
-        resetStats()
-    }
+    document.getElementById("time").style.color = "black"
 }
 
 clock = () => {
