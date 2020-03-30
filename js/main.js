@@ -40,7 +40,7 @@ getDifference = () => {
 calculateScore = () => {
     totalScore = totalScore + 100
     document.getElementById("biggestScore").innerHTML = totalScore
-    let calculation = parseInt(100 - (2*(10 * sum)))
+    let calculation = parseInt(100 - (1.5*(10 * sum)))
     if (calculation > 0) {
         score += calculation
         document.getElementById("addition").innerHTML = `+${calculation}`
@@ -95,9 +95,6 @@ startTimer = () => {
         }
         started = setInterval(clock, 1);	
     }
-    else {
-        alert("Game Over")
-    }
 }
 
 stopTimer = () => {
@@ -113,8 +110,7 @@ stopTimer = () => {
     calculateTimeDifference()
 }
 
-resetTimer = () => {
-    console.log("Reset");
+resetStats = () => {
     beginClock = null;
     stopClock = null;
     stopped = 0;
@@ -122,10 +118,25 @@ resetTimer = () => {
     timer.timing = false;
     startButton.disabled = false
     resetButton.disabled = true
+    if (round == 10) {
+        sum = 0;
+        round = 0;
+        best = 0;
+        score = 0;
+        totalScore = 0;
+    }
+}
+
+resetTimer = () => {
+    if (round == 10) {
+        alert("Game over")
+    }
+    console.log("Reset");
     clockMinutes.innerHTML = "00"
     clockSeconds.innerHTML = "00"
     clockMilliseconds.innerHTML = "000"
     document.getElementById("time").style.color = "black"
+    resetStats()
 }
 
 clock = () => {
